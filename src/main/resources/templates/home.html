@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <title>Student Portal Home Page</title>
+    <meta th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/nav"></div>
+<div id="container" class="container">
+    <h2 th:inline="text">Hello, [[${showFirstName ? student.forename : user.userName}]]!</h2>
+    <p>Welcome to your portal.</p>
+    <p>Here, you can find information about and enrol in any of the courses we offer.</p>
+    <p>Once you have registered as a student, which happens automatically upon enrolling in your first course, you will be able
+        to access and edit your student profile.</p>
+    <p>You will also be able to see the courses you are enrolled in.</p>
+    <p>Use the navigation bar above to access the different features of your portal.</p>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

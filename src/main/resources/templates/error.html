@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <title>Error Page</title>
+    <meta th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/nav"></div>
+<div id="container" class="container">
+
+    <div class="alert alert-danger">
+        There was an error  |  <span th:text="${message}"></span> | <span th:text="${status}" class="text text-danger"></span>
+    </div>
+    <div class="hero text-center text-primary">
+        Please contact  Olohimai Akalumhe if you have reached this far!!!!
+    </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

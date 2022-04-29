@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <title>Courses</title>
+    <meta th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/nav"></div>
+<div id="container">
+    <table class="table" data-toggle="table">
+        <thead>
+        <tr>
+            <th scope="col" data-sortable="true" class="normal-width">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col" data-sortable="true" data-sorter="currencySorter" class="narrow-width">Fee</th>
+            <th scope="col" class="narrow-width">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.title}"></td>
+            <td th:text="${course.description}"></td>
+            <td th:text="${#numbers.formatCurrency(course.fee)}"></td>
+            <td><a th:href="@{/courses/{id}(id=${course.id})}">
+                <button type="button" class="btn btn-primary">
+                    <i class="far fa-eye"></i>
+                </button>
+            </a>
+            </td>
+
+            <!--            <td>-->
+            <!--                <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>-->
+            <!--                <button type="button" class="btn btn-success"><i class="fas fa-user-plus"></i></button>-->
+            <!--                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

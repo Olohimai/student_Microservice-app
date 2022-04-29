@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student Profile</title>
+    <meta th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/nav"></div>
+<div id="container" class="container">
+    <!--/*@thymesVar id="student" type="uk.ac.leedsbeckett.student.Student"*/-->
+    <form class="form-group" th:action="@{/editProfile}" th:object="${student}"
+          method="post">
+        <h2>Edit Student Profile</h2>
+        <p>
+            <label for="forename">First Name: </label>
+            <input id="forename" type="text" th:field="*{forename}" class="form-control w-25" required/>
+        </p>
+        <p>
+            <label for="surname">Surname: </label>
+            <input id="surname" type="text" th:field="*{surname}" class="form-control w-25" required/>
+        </p>
+        <input id="id" type="hidden" th:field="*{id}"/>
+        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+    </form>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

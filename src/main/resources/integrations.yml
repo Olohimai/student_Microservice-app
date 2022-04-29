@@ -1,0 +1,13 @@
+finance:
+  host: http://localhost:8081
+  student:
+    create: /accounts
+  course:
+    enrol: /invoices
+  account:
+    status: /accounts/student/
+
+library:
+  host: http://localhost:1991
+  student:
+    create: /api/register

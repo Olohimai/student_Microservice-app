@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Please sign in</title>
+    <meta th:replace="fragments/header"/>
+</head>
+<body>
+<div id="container">
+    <form class="form-signin" th:action="@{/login}" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <div th:if="${param.error}" class="alert alert-danger">
+            Invalid credentials.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            You have been logged out.
+        </div>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="userName" class="form-control" placeholder="Username" required
+                   autofocus/>
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required/>
+        </p>
+        <p>
+            <input type="checkbox" name="remember-me"/>&nbsp;Remember Me
+        </p>
+        <input name="_csrf" type="hidden" value="7607f1cc-aeb7-4061-b49f-43bc44e4784e"/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <div>
+            <a href="/register">Click here to register.</a>
+        </div>
+    </form>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

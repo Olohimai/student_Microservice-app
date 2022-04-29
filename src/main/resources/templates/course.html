@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <title>Student Portal View Course</title>
+    <meta th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/nav"></div>
+<div id="alert" th:if="${isEnrolled}" th:text="${message}" th:class="${'alert alert-success'}"></div>
+<div id="container" class="container">
+    <h1 th:inline="text">[[${course.title}]]</h1>
+    <p th:inline="text">[[${course.description}]]</p>
+    <p th:inline="text">Fee: [[${#numbers.formatCurrency(course.fee)}]]</p>
+    <div th:unless="${isEnrolled}">
+        <form action="#" th:action="@{'/courses/' + ${course.id} + '/enrol'}" method="post">
+            <button class="btn btn-primary btn-lg" type="submit" name="course" value="submit">Enrol
+            </button>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

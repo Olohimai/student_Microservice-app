@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<head>
+    <title>Student Profile Page</title>
+    <meta th:replace="fragments/header"/>
+</head>
+<body>
+<div th:replace="fragments/nav"></div>
+<div id="alert" th:if="${message}" th:text="${message}"
+     th:class="${updated ? 'alert alert-success' : 'alert alert-warning'}"></div>
+<div id="container" class="container">
+    <!--/*@thymesVar id="student" type="uk.ac.leedsbeckett.student.Student"*/-->
+    <h2 th:inline="text">Student Profile</h2>
+    <p th:inline="text">First Name: [[${student.forename}]]</p>
+    <p th:inline="text">Surname: [[${student.surname}]]</p>
+    <p th:inline="text">Student ID: [[${student.studentId}]]</p>
+    <a class="btn btn-primary" th:href="@{'/editProfile/' + ${student.id}}" role="button">Edit Profile</a>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>
