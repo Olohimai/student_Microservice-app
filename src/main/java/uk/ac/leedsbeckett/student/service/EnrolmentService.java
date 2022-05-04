@@ -28,7 +28,7 @@ public class EnrolmentService {
 
     public Enrolment createEnrolment(@NotNull Course course, @NotNull Student student) {
         if (enrolmentRepository.findEnrolmentByCourseAndStudent(course, student) != null) {
-            throw new EnrolmentAlreadyExistsException("Student " + student.getStudentId() + " is already enrolled in course " + course.getTitle());
+            throw new EnrolmentAlreadyExistsException("Student " + student.getStudentId() + " is already enrolled in this course " + course.getTitle());
         }
         Enrolment enrolment = new Enrolment(student, course);
         return enrolmentRepository.save(enrolment);

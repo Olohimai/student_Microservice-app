@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Student Profile</title>
-    <meta th:replace="fragments/header"/>
+    <meta th:replace="partials/header"/>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<div th:replace="fragments/nav"></div>
-<div id="container" class="container">
-    <!--/*@thymesVar id="student" type="uk.ac.leedsbeckett.student.Student"*/-->
-    <form class="form-group" th:action="@{/editProfile}" th:object="${student}"
+<div th:replace="partials/nav"></div>
+<div class="mx-auto flex justify-center items-center py-10">
+    <form class="max-w-7xl space-y-4" th:action="@{/editProfile}" th:object="${student}"
           method="post">
-        <h2>Edit Student Profile</h2>
-        <p>
-            <label for="forename">First Name: </label>
-            <input id="forename" type="text" th:field="*{forename}" class="form-control w-25" required/>
-        </p>
-        <p>
-            <label for="surname">Surname: </label>
-            <input id="surname" type="text" th:field="*{surname}" class="form-control w-25" required/>
-        </p>
+        <div>Edit your Student Profile</div>
+        <div class="flex items-center space-x-4 ">
+            <label for="forename" class="font-extrabold w-full">First Name: </label>
+            <input id="forename" type="text" th:field="*{forename}" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required/>
+        </div>
+        <div class="flex items-center space-x-4">
+            <label for="surname" class="font-extrabold w-full">Surname: </label>
+            <input id="surname" type="text" th:field="*{surname}" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required/>
+        </div>
         <input id="id" type="hidden" th:field="*{id}"/>
-        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+        <button type="submit" class="border border-blue-600 text-blue-500  px-3 py-2 rounded-md ">Submit</button>
     </form>
 </div>
-<div th:replace="fragments/footer"></div>
 </body>
 </html>

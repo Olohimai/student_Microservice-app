@@ -3,41 +3,42 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <title>Courses</title>
-    <meta th:replace="fragments/header"/>
+    <meta th:replace="partials/header"/>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<div th:replace="fragments/nav"></div>
-<div id="container">
-    <table class="table" data-toggle="table">
-        <thead>
-        <tr>
-            <th scope="col" data-sortable="true" class="normal-width">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col" data-sortable="true" data-sorter="currencySorter" class="narrow-width">Fee</th>
-            <th scope="col" class="narrow-width">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="course : ${courses}">
-            <td th:text="${course.title}"></td>
-            <td th:text="${course.description}"></td>
-            <td th:text="${#numbers.formatCurrency(course.fee)}"></td>
-            <td><a th:href="@{/courses/{id}(id=${course.id})}">
-                <button type="button" class="btn btn-primary">
-                    <i class="far fa-eye"></i>
-                </button>
-            </a>
-            </td>
-
-            <!--            <td>-->
-            <!--                <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>-->
-            <!--                <button type="button" class="btn btn-success"><i class="fas fa-user-plus"></i></button>-->
-            <!--                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>-->
-            <!--            </td>-->
-        </tr>
-        </tbody>
-    </table>
+<div th:replace="partials/nav"></div>
+<div class="px-4 sm:px-6 lg:px-8 py-10">
+    <div class="mt-8 flex flex-col">
+        <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-300" data-toggle="table">
+                        <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"data-sortable="true">Title</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
+                            <th scope="col" class="px-3 py-3.5 text-sm font-semibold text-gray-900 text-center"data-sortable="true" data-sorter="currencySorter">Fee</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 bg-white">
+                        <tr th:each="course : ${courses}">
+                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6" th:text="${course.title}"></td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500" th:text="${course.description}"></td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center" th:text="${#numbers.formatCurrency(course.fee)}"></td>
+                            <td class="whitespace-nowrap py-4 pl-3 pr-4 text-left text-sm font-medium sm:pr-6">
+                                <a th:href="@{/courses/{id}(id=${course.id})}" class="text-white rounded-sm bg-blue-500 py-2 px-3 text-indigo-600 hover:text-indigo-900">View</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div th:replace="fragments/footer"></div>
+
+<div th:replace="partials/footer"></div>
 </body>
 </html>

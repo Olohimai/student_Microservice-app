@@ -56,29 +56,6 @@ class MiscellaneousBeans {
     @Bean
     CommandLineRunner initDatabase(StudentRepository studentRepository, UserRepository userRepository, CourseRepository courseRepository, EnrolmentRepository enrolmentRepository) {
         return args -> {
-//            Student jesse = new Student("Jesse", "Pinkman");
-//            User walterWhite = new User("walterwhite",  Role.STUDENT, "w.white@gmail.com", "password");
-//            Student walter = new Student("Walter", "White");
-//            walterWhite.setStudent(walter);
-//            userRepository.save(walterWhite);
-//            studentRepository.save(jesse);
-//            userRepository.findAll().forEach(user -> log.info("Preloaded " + user));
-//            studentRepository.findAll().forEach(student -> log.info("Preloaded " + student));
-//
-//            Course programming = new Course("Introduction to Programming", "An introductory course covering the fundamentals of object-oriented programming.", 150.00);
-//            Course ocpjp = new Course("OCPJP Exam Preparation", "A course covering the learning objectives for the latest OCPJP certification.", 350.00);
-//            Course springBoot = new Course("Spring Boot", "An intermediate course on how to make the most of Spring Boot's latest functionality.", 200.00);
-//            Course chemistry = new Course("Advanced Chemistry", "An advanced course covering the in-lab production of medical-grade synthetic substances.", 1150.00);
-//            courseRepository.save(programming);
-//            courseRepository.save(ocpjp);
-//            courseRepository.save(springBoot);
-//            courseRepository.save(chemistry);
-//            courseRepository.findAll().forEach(course -> log.info("Preloaded " + course));
-//
-//            enrolmentRepository.save(new Enrolment(jesse, programming));
-//            enrolmentRepository.save(new Enrolment(walter, springBoot));
-//            enrolmentRepository.save(new Enrolment(walter, chemistry));
-//            courseRepository.findAll().forEach(enrolment -> log.info("Preloaded " + enrolment));
         };
     }
 }

@@ -24,7 +24,7 @@ public class GraduationService {
         Account account = integrationService.getStudentPaymentStatus(student);
         ModelAndView modelAndView = new ModelAndView("graduation");
         modelAndView.addObject("balanceOutstanding", account.isHasOutstandingBalance());
-        modelAndView.addObject("message", account.isHasOutstandingBalance() ? "ineligible to graduate" : "eligible to graduate");
+        modelAndView.addObject("message", account.isHasOutstandingBalance() ? "You are ineligible to graduate" : "You are eligible to graduate now");
         return modelAndView;
     }
 }

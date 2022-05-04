@@ -3,10 +3,11 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <title>Error Page</title>
-    <meta th:replace="fragments/header"/>
+    <meta th:replace="partials/header"/>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<div th:replace="fragments/nav"></div>
+<div th:replace="partials/nav"></div>
 <div id="container" class="container">
 
     <div class="alert alert-danger">
@@ -16,6 +17,6 @@
         Please contact  Olohimai Akalumhe if you have reached this far!!!!
     </div>
 </div>
-<div th:replace="fragments/footer"></div>
+<div th:replace="partials/footer"></div>
 </body>
 </html>

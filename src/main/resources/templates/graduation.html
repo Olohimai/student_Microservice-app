@@ -3,16 +3,17 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <title>Graduation</title>
-    <meta th:replace="fragments/header"/>
+    <meta th:replace="partials/header"/>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<div th:replace="fragments/nav"></div>
+<div th:replace="partials/nav"></div>
 <div id="container" class="container">
     <h2>Graduation</h2>
-    <p>You need to pay any outstanding course and library fees before you are eligible to graduate.</p>
+    <p>Note: You need to pay any outstanding course and library fees before you are eligible to graduate.</p>
     <p>Your current status is: <span th:text="${message}"></span>.</p>
     <p th:if="${balanceOutstanding}">Please log into the Payment Portal to pay your outstanding balance.</p>
 </div>
-<div th:replace="fragments/footer"></div>
+<div th:replace="partials/footer"></div>
 </body>
 </html>

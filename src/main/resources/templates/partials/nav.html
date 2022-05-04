@@ -1,0 +1,45 @@
+<div th:partails="nav">
+    <div class="relative bg-gradient-to-r from-indigo-500 overflow-hidden">
+        <div class="relative py-6">
+            <div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                    <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
+                        <div class="">
+                            <div class="w-full">
+                                <a th:href="@{/home}">
+                                    <span class="sr-only">Student Portal</span>
+                                    <div class=" text-lg font-extrabold mr-6"> Student Portal</div>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div id="navbarSupportedContent">
+                            <ul class="hidden md:flex md:space-x-10 items-center" onmouseenter="hideAlert()">
+                               <li> <a class="font-medium text-gray-500 hover:text-gray-900" th:href="@{/home}">Home</a></li>
+
+                               <li> <a class="font-medium text-gray-500 hover:text-gray-900" th:href="@{/courses}">All Courses</a></li>
+
+                                <li th:if="${isStudent}"> <a class="font-medium text-gray-500 hover:text-gray-900" th:href="@{/enrolments}">Enrolment</a></li>
+
+                                <li th:if="${isStudent}"> <a class="font-medium text-gray-500 hover:text-gray-900" th:href="@{/profile}">Profile</a></li>
+
+                                <li th:if="${isStudent}"> <a class="font-medium text-gray-500 hover:text-gray-900" th:href="@{/graduation}">Graduation</a></li>
+
+                                <li>
+                                    <form class="space-x-4" th:action="@{/courses/search}" method="post">
+                                        <input class="px-3 py-2 border rounded-full" name="searchString" type="text" placeholder="Search" aria-label="Search"/>
+                                    </form>
+                                </li>
+                                <form name="logout" th:action="@{/logout}" method="post">
+                                    <a class="text-base font-medium text-white bg-blue-500 px-3 py-2 rounded-lg" href="#" onclick="document.forms['logout'].submit();">
+                                        Log Out
+                                    </a>
+                                </form>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

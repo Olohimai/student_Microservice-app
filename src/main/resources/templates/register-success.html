@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Registration Success</title>
-    <meta th:replace="fragments/header"/>
+    <meta th:replace="partials/header"/>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 <div class="container-fluid text-center" id="container">
-    <h3>You have registered successfully!</h3>
+    <h3>Congratulations You have registered successfully!</h3>
     <h4><a href="/login">Click here to Log in</a></h4>
 </div>
-<div th:replace="fragments/footer"></div>
+<div th:replace="partials/footer"></div>
 </body>
 </html>
