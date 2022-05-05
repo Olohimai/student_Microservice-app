@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<div th:replace="partials/nav"></div>
+<div th:replace="partials/menu"></div>
 <div class="bg-gradient-to-r from-indigo-500" >
     <div class="flex items-center bg-green-200 mx-6 w-80 py-4 px-3 space-x-3 text-sm" id="alert" th:if="${isEnrolled}">
         <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -17,13 +17,15 @@
     </div>
     <div >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-            <div class="py-8 w-1/2">
-                <h1 class="text-3xl font-semibold uppercase text-gray-700" th:inline="text">[[${course.title}]]</h1>
-                <p th:inline="text">[[${course.description}]]</p>
-                <p th:inline="text">Fee: [[${#numbers.formatCurrency(course.fee)}]]</p>
+            <div class="py-8 w-1/2 space-y-4">
+         <div>
+             <h1 class="text-3xl font-semibold uppercase text-gray-700" th:inline="text">[[${course.title}]]</h1>
+             <p th:inline="text">[[${course.description}]]</p>
+             <p th:inline="text">Fee: [[${#numbers.formatCurrency(course.fee)}]]</p>
+         </div>
                 <div th:unless="${isEnrolled}">
                     <form action="#" th:action="@{'/courses/' + ${course.id} + '/enrol'}" method="post">
-                        <button class="text-white rounded-sm bg-blue-500 py-2 px-3 text-indigo-600 hover:text-indigo-900" type="submit" name="course" value="submit">Enrol Now
+                        <button class="text-white rounded-sm bg-blue-500 py-2 px-3 hover:text-indigo-900" type="submit" name="course" value="submit">Enrol Now
                         </button>
                     </form>
                 </div>

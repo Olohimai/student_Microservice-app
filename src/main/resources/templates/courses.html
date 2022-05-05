@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<div th:replace="partials/nav"></div>
+<div th:replace="partials/menu"></div>
 <div class="px-4 sm:px-6 lg:px-8 py-10">
     <div class="mt-8 flex flex-col">
         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -28,7 +28,7 @@
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500" th:text="${course.description}"></td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center" th:text="${#numbers.formatCurrency(course.fee)}"></td>
                             <td class="whitespace-nowrap py-4 pl-3 pr-4 text-left text-sm font-medium sm:pr-6">
-                                <a th:href="@{/courses/{id}(id=${course.id})}" class="text-white rounded-sm bg-blue-500 py-2 px-3 text-indigo-600 hover:text-indigo-900">View</a>
+                                <a th:href="@{/courses/{id}(id=${course.id})}" class="text-white rounded-sm bg-blue-500 py-2 px-3">View</a>
                             </td>
                         </tr>
                         </tbody>
