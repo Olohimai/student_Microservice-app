@@ -10,9 +10,6 @@
     <img class="mx-auto h-12 w-auto" src="https://www.diverseeducators.co.uk/wp-content/uploads/2020/08/leeds-beckett-logo.png" alt="Leedbecketlogo">
     <h2 class="my-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your Student account</h2>
     <form class="space-y-6" th:action="@{/login}" method="post">
-<!--        <div th:if="${param.error}" class="alert alert-danger">-->
-<!--            Invalid credentials.-->
-<!--        </div>-->
 
         <div th:if="${param.error}" class="rounded-md bg-red-50 p-4">
             <div class="flex">
