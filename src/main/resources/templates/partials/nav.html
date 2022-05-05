@@ -23,7 +23,7 @@
 
                                 <li th:if="${isStudent}"> <a class="font-medium text-gray-500 hover:text-gray-900" th:href="@{/profile}">Profile</a></li>
 
-                                <li th:if="${isStudent}"> <a class="font-medium text-gray-500 hover:text-gray-900" th:href="@{/graduation}">Graduation</a></li>
+                                <li th:if="${isStudent}"> <a class="font-medium text-gray-500 hover:text-gray-900" th:href="@{/graduation}">Graduation Status</a></li>
 
                                 <li>
                                     <form class="space-x-4" th:action="@{/courses/search}" method="post">
