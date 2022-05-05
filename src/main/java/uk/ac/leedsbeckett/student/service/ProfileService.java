@@ -53,7 +53,7 @@ public class ProfileService {
         modelAndView.addObject("student", returnedStudent);
         modelAndView.addObject("isStudent", true);
         modelAndView.addObject("updated", changed);
-        modelAndView.addObject("message", changed ? "Successfully Updated your Profile" : "Profile Did not update enter a new name!!!");
+        modelAndView.addObject("message", changed ? "You have Successfully Updated your Profile" : "Your Profile Did not update because name already in use, Enter a new name!!!");
         return modelAndView;
     }
 }
