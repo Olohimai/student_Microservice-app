@@ -7,21 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.CourseNotFoundException;
-//import uk.ac.leedsbeckett.student.exception.EnrolmentAlreadyExistsException;
-import uk.ac.leedsbeckett.student.model.Course;
-import uk.ac.leedsbeckett.student.model.Invoice;
-import uk.ac.leedsbeckett.student.model.Student;
-
-import uk.ac.leedsbeckett.student.exception.CourseNotFoundException;
-import uk.ac.leedsbeckett.student.exception.EnrolmentAlreadyExistsException;
-import uk.ac.leedsbeckett.student.exception.CourseNotFoundException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
