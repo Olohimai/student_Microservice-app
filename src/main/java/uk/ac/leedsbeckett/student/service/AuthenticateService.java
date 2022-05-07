@@ -9,10 +9,10 @@ import uk.ac.leedsbeckett.student.model.User;
 import uk.ac.leedsbeckett.student.repository.UserRepository;
 
 @Component
-public class AuthenticationService {
+public class AuthenticateService {
     private final UserRepository userRepository;
 
-    public AuthenticationService(UserRepository userRepository) {
+    public AuthenticateService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

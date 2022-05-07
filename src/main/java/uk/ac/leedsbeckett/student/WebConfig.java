@@ -7,11 +7,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import uk.ac.leedsbeckett.student.controller.StudentInterceptor;
 
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer {
 
     private final StudentInterceptor studentInterceptor;
 
-    public MvcConfig(StudentInterceptor studentInterceptor) {
+    public WebConfig(StudentInterceptor studentInterceptor) {
         this.studentInterceptor = studentInterceptor;
     }
 
@@ -19,7 +19,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/home").setViewName("home");
         registry.addViewController("/").setViewName("home");
-        registry.addViewController("/register").setViewName("register");
+        registry.addViewController("/signup").setViewName("signup");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/profile").setViewName("profile");
     }

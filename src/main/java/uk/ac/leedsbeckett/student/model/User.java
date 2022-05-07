@@ -31,14 +31,4 @@ public class User {
                     { @JoinColumn(name = "student_id", referencedColumnName = "id") })
     @ToString.Exclude
     private Student student;
-
-//    public User() {
-//    }
-//
-//    public User(String userName, Role role, String email, String password) {
-//        this.userName = userName;
-//        this.role = role;
-//        this.email = email;
-//        this.password = password;
-//    }
 }

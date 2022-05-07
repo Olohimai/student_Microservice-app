@@ -21,7 +21,7 @@ public class Student {
     @NotBlank
     private String studentId;
     private String surname;
-    private String forename;
+    private String firstname;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "student")
     @ToString.Exclude
     @JsonIgnore
@@ -32,8 +32,8 @@ public class Student {
     public Student() {
     }
 
-    public Student(String forename, String surname) {
-        this.forename = forename;
+    public Student(String firstname, String surname) {
+        this.firstname = firstname;
         this.surname = surname;
         populateStudentId();
     }

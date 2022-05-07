@@ -1,4 +1,4 @@
-package uk.ac.leedsbeckett.student.service;
+package uk.ac.leedsbeckett.student.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,84 +21,84 @@ import static org.mockito.Mockito.verify;
 class ProfileServiceTest extends ProfileServiceIntTest {
 
     @Test
-    void testGetProfile_callsPortalServiceMethod_once() {
+    void testProfile() {
         profileService.getProfile(user, existingStudent, "test");
-        verify(portalService, times(1)).loadPortalUserDetails(user, existingStudent, "tests");
+        verify(portalService, times(1)).loadPortalUserDetails(user, existingStudent, "test");
     }
 
     @Test
-    void testGetProfile_whenViewIsNull_throwsConstraintViolationException() {
+    void testNull() {
         assertThrows(ConstraintViolationException.class, () -> profileService.getProfile(user, existingStudent, null),
-                "Throw exception.");
+                "Throws an exception.");
     }
 
     @Test
-    void testGetProfile_whenViewIsEmpty_throwsConstraintViolationException() {
+    void testEmptyProfile() {
         assertThrows(ConstraintViolationException.class, () -> profileService.getProfile(user, existingStudent, ""),
-                "Throw exception.");
+                "Throws an exception.");
     }
 
     @Test
-    void testExistingStudentId() {
+    void testExistingStudentID() {
         ModelAndView modelAndView = profileService.getProfileToEdit(existingStudent.getId());
-        assertEquals(modelAndView.getViewName(), "profile-edit");
+        assertEquals(modelAndView.getViewName(), "update");
         assertNotNull(modelAndView.getModel());
         assertEquals(1, modelAndView.getModel().size());
         assertEquals(existingStudent, modelAndView.getModel().get("student"));
     }
 
     @Test
-    void testNonExistingStudentId() {
+    void testNewStudentID() {
         assertThrows(StudentNotFoundException.class, () -> profileService.getProfileToEdit(9999L),
-                "Throw exception.");
+                "Throws an exception.");
     }
 
     @Test
-    void testNullStudentId() {
+    void testStudentIdEqualNull() {
         assertThrows(StudentNotFoundException.class, () -> profileService.getProfileToEdit(null),
-                "Throw exception");
+                "Throws an exception");
     }
 
     @Test
     void testEditProfile() {
-        dataStudent.setForename("Peace");
+        dataStudent.setFirstname("Peace");
         dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
-        assertEquals("    Peace", returnedStudent.getForename());
+        assertEquals("Peace", returnedStudent.getFirstname());
         assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
     void testDetailsCreated() {
-        dataStudent.setForename("Peace");
+        dataStudent.setFirstname("Peace");
         dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
-        assertEquals("Peace", returnedStudent.getForename());
+        assertEquals("Peace", returnedStudent.getFirstname());
         assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
-    void testEditForename() {
-        dataStudent.setForename("Peace");
+    void testEditFirstname() {
+        dataStudent.setFirstname("Peace");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
         assertNotNull(returnedStudent.getSurname());
-        assertEquals("    Peace", returnedStudent.getForename());
+        assertEquals("Peace", returnedStudent.getFirstname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
-    void testEditForenameAndSurnameEmpty() {
-        dataStudent.setForename("Peace");
+    void testEditFirstnameAndSurnameEmpty() {
+        dataStudent.setFirstname("Peace");
         dataStudent.setSurname("");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
         assertNotNull(returnedStudent.getSurname());
-        assertEquals("Peace", returnedStudent.getForename());
+        assertEquals("Peace", returnedStudent.getFirstname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
@@ -107,24 +107,24 @@ class ProfileServiceTest extends ProfileServiceIntTest {
         dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
-        assertNotNull(returnedStudent.getForename());
+        assertNotNull(returnedStudent.getFirstname());
         assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
-    void testEditProfile_withOnlySurnameSuppliedAndForenameBlank_onlyUpdatesSurname_andReturnsCorrectModelAndView() {
+    void testEditProfileSurname() {
         dataStudent.setSurname("Akalumhe");
-        dataStudent.setForename("");
+        dataStudent.setFirstname("");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
-        assertNotNull(returnedStudent.getForename());
+        assertNotNull(returnedStudent.getFirstname());
         assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
-    void testEditProfile_withStudentIdSupplied_doesNotUpdateStudent_andReturnsCorrectModelAndView() {
+    void testEditProfileStudentID() {
         dataStudent.setStudentId("c1234567");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
@@ -141,7 +141,7 @@ class ProfileServiceTest extends ProfileServiceIntTest {
 
     private void assertStudentNotUpdated(ModelAndView modelAndView, Student returnedStudent) {
         assertCorrectModelAndView(modelAndView, returnedStudent);
-        assertNotNull(returnedStudent.getForename());
+        assertNotNull(returnedStudent.getFirstname());
         assertNotNull(returnedStudent.getSurname());
         assertFalse((Boolean) modelAndView.getModel().get("updated"));
         assertEquals("Your Profile Did not update because name already in use, Enter a new name!!!", modelAndView.getModel().get("message"));

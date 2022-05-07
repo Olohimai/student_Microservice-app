@@ -1,4 +1,4 @@
-package uk.ac.leedsbeckett.student.service;
+package uk.ac.leedsbeckett.student.controller;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
@@ -9,6 +9,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import uk.ac.leedsbeckett.student.exception.EnrolmentAlreadyExistsException;
 import uk.ac.leedsbeckett.student.model.*;
 import uk.ac.leedsbeckett.student.repository.CourseRepository;
+import uk.ac.leedsbeckett.student.service.CourseService;
+import uk.ac.leedsbeckett.student.service.EnrolmentService;
+import uk.ac.leedsbeckett.student.service.IntegrationService;
+import uk.ac.leedsbeckett.student.service.UserService;
 
 import java.util.Arrays;
 import java.util.List;

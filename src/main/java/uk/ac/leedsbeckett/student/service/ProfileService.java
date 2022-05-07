@@ -30,7 +30,7 @@ public class ProfileService {
 
     public ModelAndView getProfileToEdit(Long studentId) {
         Student student = studentRepository.findById(studentId).orElseThrow(StudentNotFoundException::new);
-        ModelAndView modelAndView = new ModelAndView("profile-edit");
+        ModelAndView modelAndView = new ModelAndView("update");
         modelAndView.addObject("student", student);
         return modelAndView;
     }
@@ -41,8 +41,8 @@ public class ProfileService {
         studentToSave.populateStudentId();
         BeanUtils.copyProperties(studentFromDatabase, studentToSave);
 
-        if (providedStudent.getForename() != null && !providedStudent.getForename().isEmpty()) {
-            studentToSave.setForename(providedStudent.getForename());
+        if (providedStudent.getFirstname() != null && !providedStudent.getFirstname().isEmpty()) {
+            studentToSave.setFirstname(providedStudent.getFirstname());
         }
         if (providedStudent.getSurname() != null && !providedStudent.getSurname().isEmpty()) {
             studentToSave.setSurname(providedStudent.getSurname());

@@ -28,7 +28,7 @@ public class PortalService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found.");
         }
-        return new PortalUserDetails(user);
+        return new Details(user);
     }
 
     public ModelAndView loadPortalUserDetails(User user, Student student, @NotNull @NotEmpty String view) {
@@ -40,7 +40,7 @@ public class PortalService implements UserDetailsService {
         if (student != null) {
             modelAndView.addObject("student", student);
         }
-        modelAndView.addObject("showFirstName", student != null && student.getForename() != null);
+        modelAndView.addObject("showFirstName", student != null && student.getFirstname() != null);
         return modelAndView;
     }
 

@@ -1,4 +1,4 @@
-package uk.ac.leedsbeckett.student.service;
+package uk.ac.leedsbeckett.student.controller;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
@@ -6,7 +6,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import uk.ac.leedsbeckett.student.model.*;
+import uk.ac.leedsbeckett.student.model.Account;
+import uk.ac.leedsbeckett.student.model.Student;
+import uk.ac.leedsbeckett.student.service.GraduationService;
+import uk.ac.leedsbeckett.student.service.IntegrationService;
 
 public class GraduationServiceIntTest {
 

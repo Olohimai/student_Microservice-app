@@ -5,14 +5,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class PortalUserDetails implements UserDetails {
+public class Details implements UserDetails {
     private User user;
 
-    public PortalUserDetails() {
+    public Details() {
 
     }
 
-    public PortalUserDetails(User user) {
+    public Details(User user) {
         super();
         this.user = user;
     }
