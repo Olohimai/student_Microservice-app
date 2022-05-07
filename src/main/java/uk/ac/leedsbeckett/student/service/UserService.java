@@ -5,7 +5,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
-import uk.ac.leedsbeckett.student.exception.StudentAlreadyExistsException;
+import uk.ac.leedsbeckett.student.exception.UserExistsException;
 import uk.ac.leedsbeckett.student.model.*;
 import uk.ac.leedsbeckett.student.repository.StudentRepository;
 import uk.ac.leedsbeckett.student.repository.UserRepository;
@@ -49,7 +49,7 @@ public class UserService {
 
     public User createStudentFromUser(@NotNull User user) {
         if (studentRepository.findByUserId(user.getId()) != null) {
-            throw new StudentAlreadyExistsException(user.getUserName());
+            throw new UserExistsException(user.getUserName());
         }
         Student student = new Student();
         student.populateStudentId();

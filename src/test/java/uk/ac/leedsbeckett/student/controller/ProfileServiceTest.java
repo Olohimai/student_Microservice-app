@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.StudentNotFoundException;
+import uk.ac.leedsbeckett.student.exception.StudentException;
 import uk.ac.leedsbeckett.student.model.Student;
 
 import javax.validation.ConstraintViolationException;
@@ -49,13 +49,13 @@ class ProfileServiceTest extends ProfileServiceIntTest {
 
     @Test
     void testNewStudentID() {
-        assertThrows(StudentNotFoundException.class, () -> profileService.getProfileToEdit(9999L),
+        assertThrows(StudentException.class, () -> profileService.getProfileToEdit(9999L),
                 "Throws an exception.");
     }
 
     @Test
     void testStudentIdEqualNull() {
-        assertThrows(StudentNotFoundException.class, () -> profileService.getProfileToEdit(null),
+        assertThrows(StudentException.class, () -> profileService.getProfileToEdit(null),
                 "Throws an exception");
     }
 

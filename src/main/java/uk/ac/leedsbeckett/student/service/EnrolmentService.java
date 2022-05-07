@@ -3,7 +3,7 @@ package uk.ac.leedsbeckett.student.service;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.EnrolmentAlreadyExistsException;
+import uk.ac.leedsbeckett.student.exception.EnrolmentException;
 import uk.ac.leedsbeckett.student.model.Course;
 import uk.ac.leedsbeckett.student.model.Enrolment;
 import uk.ac.leedsbeckett.student.repository.EnrolmentRepository;
@@ -28,7 +28,7 @@ public class EnrolmentService {
 
     public Enrolment createEnrolment(@NotNull Course course, @NotNull Student student) {
         if (enrolmentRepository.findEnrolmentByCourseAndStudent(course, student) != null) {
-            throw new EnrolmentAlreadyExistsException("Student " + student.getStudentId() + " is already enrolled in this course " + course.getTitle());
+            throw new EnrolmentException("Student " + student.getStudentId() + " is already enrolled in this course " + course.getTitle());
         }
         Enrolment enrolment = new Enrolment(student, course);
         return enrolmentRepository.save(enrolment);

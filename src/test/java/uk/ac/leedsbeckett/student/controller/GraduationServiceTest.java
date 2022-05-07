@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.StudentNotFoundException;
+import uk.ac.leedsbeckett.student.exception.StudentException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +17,7 @@ class GraduationServiceTest extends GraduationServiceIntTest {
 
     @Test
     void testGraduationStatus() {
-        assertThrows(StudentNotFoundException.class, () -> graduationService.getGraduationStatus(null),
+        assertThrows(StudentException.class, () -> graduationService.getGraduationStatus(null),
             "Exception was not thrown.");
     }
     @Test

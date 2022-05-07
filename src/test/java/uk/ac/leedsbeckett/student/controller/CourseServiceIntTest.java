@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import uk.ac.leedsbeckett.student.exception.EnrolmentAlreadyExistsException;
+import uk.ac.leedsbeckett.student.exception.EnrolmentException;
 import uk.ac.leedsbeckett.student.model.*;
 import uk.ac.leedsbeckett.student.repository.CourseRepository;
 import uk.ac.leedsbeckett.student.service.CourseService;
@@ -98,7 +98,7 @@ public class CourseServiceIntTest {
         Mockito.when(enrolmentService.createEnrolment(course3, student))
                 .thenReturn(enrolmentCourse3);
         Mockito.when(enrolmentService.createEnrolment(course2, student))
-                .thenThrow(new EnrolmentAlreadyExistsException());
+                .thenThrow(new EnrolmentException());
         Mockito.when(integrationService.createCourseFeeInvoice(any(Invoice.class)))
                 .thenReturn(invoice);
         Mockito.doNothing()

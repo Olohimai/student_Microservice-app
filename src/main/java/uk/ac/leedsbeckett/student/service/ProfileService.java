@@ -4,7 +4,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.StudentNotFoundException;
+import uk.ac.leedsbeckett.student.exception.StudentException;
 import uk.ac.leedsbeckett.student.model.Student;
 import uk.ac.leedsbeckett.student.repository.StudentRepository;
 import uk.ac.leedsbeckett.student.model.User;
@@ -29,14 +29,14 @@ public class ProfileService {
     }
 
     public ModelAndView getProfileToEdit(Long studentId) {
-        Student student = studentRepository.findById(studentId).orElseThrow(StudentNotFoundException::new);
+        Student student = studentRepository.findById(studentId).orElseThrow(StudentException::new);
         ModelAndView modelAndView = new ModelAndView("update");
         modelAndView.addObject("student", student);
         return modelAndView;
     }
 
     public ModelAndView editProfile(Student providedStudent) {
-        Student studentFromDatabase = studentRepository.findById(providedStudent.getId()).orElseThrow(StudentNotFoundException::new);
+        Student studentFromDatabase = studentRepository.findById(providedStudent.getId()).orElseThrow(StudentException::new);
         Student studentToSave = new Student();
         studentToSave.populateStudentId();
         BeanUtils.copyProperties(studentFromDatabase, studentToSave);

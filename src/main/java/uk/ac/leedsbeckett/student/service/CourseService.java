@@ -4,7 +4,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.CourseNotFoundException;
+import uk.ac.leedsbeckett.student.exception.CourseException;
 import uk.ac.leedsbeckett.student.model.*;
 import uk.ac.leedsbeckett.student.repository.CourseRepository;
 
@@ -80,7 +80,7 @@ public class CourseService {
 
     private void populateStudentAndCourse(User user, Long courseId) {
         student = userService.findStudentFromUser(user);
-        course = courseRepository.findById(courseId).orElseThrow(CourseNotFoundException::new);
+        course = courseRepository.findById(courseId).orElseThrow(CourseException::new);
     }
 
     private Invoice notifySubscribers(Student student, Course course) {

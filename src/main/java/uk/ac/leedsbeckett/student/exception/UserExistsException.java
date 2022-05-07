@@ -1,11 +1,11 @@
 package uk.ac.leedsbeckett.student.exception;
 
-public class StudentAlreadyExistsException extends RuntimeException {
+public class UserExistsException extends RuntimeException {
 
-    public StudentAlreadyExistsException() {
+    public UserExistsException() {
         super("A student already exists for this user registration.");
     }
-    public StudentAlreadyExistsException(String username) {
+    public UserExistsException(String username) {
         super("A student already exists " + username);
     }
 }

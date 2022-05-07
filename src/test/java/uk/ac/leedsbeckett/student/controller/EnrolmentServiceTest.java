@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.EnrolmentAlreadyExistsException;
+import uk.ac.leedsbeckett.student.exception.EnrolmentException;
 import uk.ac.leedsbeckett.student.model.Enrolment;
 
 import javax.validation.ConstraintViolationException;
@@ -107,7 +107,7 @@ class EnrolmentServiceTest extends EnrolmentServiceIntTest {
 
     @Test
     void testCreateEnrolment_whenEnrolmentAlreadyExists_throwsEnrolmentAlreadyExistsException() {
-        assertThrows(EnrolmentAlreadyExistsException.class, () -> enrolmentService.createEnrolment(course1, studentOneEnrolment),
+        assertThrows(EnrolmentException.class, () -> enrolmentService.createEnrolment(course1, studentOneEnrolment),
                 "Exception was not thrown.");
     }
 
