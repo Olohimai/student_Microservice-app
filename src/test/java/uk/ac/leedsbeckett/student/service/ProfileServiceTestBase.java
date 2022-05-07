@@ -41,7 +41,6 @@ public class ProfileServiceTestBase {
         Faker faker = new Faker();
         existingStudent = new Student(faker.name().firstName(), faker.name().lastName());
         existingStudent.setId(1L);
-        user = new User(faker.name().username(), Role.STUDENT, "user@gmail.com", faker.ancient().god());
         dataStudent = new Student();
         dataStudent.setId(1L);
     }

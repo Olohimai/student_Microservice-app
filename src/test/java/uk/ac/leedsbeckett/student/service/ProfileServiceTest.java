@@ -22,20 +22,20 @@ class ProfileServiceTest extends ProfileServiceTestBase {
 
     @Test
     void testGetProfile_callsPortalServiceMethod_once() {
-        profileService.getProfile(user, existingStudent, "dummy");
+        profileService.getProfile(user, existingStudent, "test");
         verify(portalService, times(1)).loadPortalUserDetails(user, existingStudent, "dummy");
     }
 
     @Test
     void testGetProfile_whenViewIsNull_throwsConstraintViolationException() {
         assertThrows(ConstraintViolationException.class, () -> profileService.getProfile(user, existingStudent, null),
-                "Exception was not thrown.");
+                "Throw exception.");
     }
 
     @Test
     void testGetProfile_whenViewIsEmpty_throwsConstraintViolationException() {
         assertThrows(ConstraintViolationException.class, () -> profileService.getProfile(user, existingStudent, ""),
-                "Exception was not thrown.");
+                "Throw exception.");
     }
 
     @Test
@@ -50,76 +50,76 @@ class ProfileServiceTest extends ProfileServiceTestBase {
     @Test
     void testGetProfileToEdit_withNonExistingStudentId_throwsStudentNotFoundException() {
         assertThrows(StudentNotFoundException.class, () -> profileService.getProfileToEdit(9999L),
-                "Exception was not thrown.");
+                "Throw exception.");
     }
 
     @Test
     void testGetProfileToEdit_withNullStudentId_throwsStudentNotFoundException() {
         assertThrows(StudentNotFoundException.class, () -> profileService.getProfileToEdit(null),
-                "Exception was not thrown.");
+                "Throw exception");
     }
 
     @Test
     void testEditProfile_withStudentDetailsModified_returnsCorrectModelAndView() {
-        dataStudent.setForename("Mohammed");
-        dataStudent.setSurname("Salah");
+        dataStudent.setForename("    Peace");
+        dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
-        assertEquals("Mohammed", returnedStudent.getForename());
-        assertEquals("Salah", returnedStudent.getSurname());
+        assertEquals("    Peace", returnedStudent.getForename());
+        assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
     void testEditProfile_withStudentDetailsCreated_returnsCorrectModelAndView() {
-        dataStudent.setForename("Mohammed");
-        dataStudent.setSurname("Salah");
+        dataStudent.setForename("    Peace");
+        dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
-        assertEquals("Mohammed", returnedStudent.getForename());
-        assertEquals("Salah", returnedStudent.getSurname());
+        assertEquals("    Peace", returnedStudent.getForename());
+        assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
     void testEditProfile_withOnlyForenameSupplied_onlyUpdatesForename_andReturnsCorrectModelAndView() {
-        dataStudent.setForename("Mohammed");
+        dataStudent.setForename("    Peace");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
         assertNotNull(returnedStudent.getSurname());
-        assertEquals("Mohammed", returnedStudent.getForename());
+        assertEquals("    Peace", returnedStudent.getForename());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
     void testEditProfile_withForenameSuppliedAndSurnameBlank_onlyUpdatesForename_andReturnsCorrectModelAndView() {
-        dataStudent.setForename("Mohammed");
+        dataStudent.setForename("    Peace");
         dataStudent.setSurname("");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
         assertNotNull(returnedStudent.getSurname());
-        assertEquals("Mohammed", returnedStudent.getForename());
+        assertEquals("    Peace", returnedStudent.getForename());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
     void testEditProfile_withOnlySurnameSupplied_returnsCorrectModelAndView() {
-        dataStudent.setSurname("Salah");
+        dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
         assertNotNull(returnedStudent.getForename());
-        assertEquals("Salah", returnedStudent.getSurname());
+        assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
     void testEditProfile_withOnlySurnameSuppliedAndForenameBlank_onlyUpdatesSurname_andReturnsCorrectModelAndView() {
-        dataStudent.setSurname("Salah");
+        dataStudent.setSurname("Akalumhe");
         dataStudent.setForename("");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
         assertNotNull(returnedStudent.getForename());
-        assertEquals("Salah", returnedStudent.getSurname());
+        assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
@@ -136,7 +136,7 @@ class ProfileServiceTest extends ProfileServiceTestBase {
     private void assertStudentUpdated(ModelAndView modelAndView, Student returnedStudent) {
         assertCorrectModelAndView(modelAndView, returnedStudent);
         assertTrue((Boolean) modelAndView.getModel().get("updated"));
-        assertEquals("Profile updated", modelAndView.getModel().get("message"));
+        assertEquals("You have Successfully Updated your Profile", modelAndView.getModel().get("message"));
     }
 
     private void assertStudentNotUpdated(ModelAndView modelAndView, Student returnedStudent) {
@@ -144,7 +144,7 @@ class ProfileServiceTest extends ProfileServiceTestBase {
         assertNotNull(returnedStudent.getForename());
         assertNotNull(returnedStudent.getSurname());
         assertFalse((Boolean) modelAndView.getModel().get("updated"));
-        assertEquals("Profile not updated", modelAndView.getModel().get("message"));
+        assertEquals("Your Profile Did not update because name already in use, Enter a new name!!!", modelAndView.getModel().get("message"));
     }
 
     private void assertCorrectModelAndView(ModelAndView modelAndView, Student returnedStudent) {

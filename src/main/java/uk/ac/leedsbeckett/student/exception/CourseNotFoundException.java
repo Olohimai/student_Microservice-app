@@ -2,9 +2,9 @@ package uk.ac.leedsbeckett.student.exception;
 
 public class CourseNotFoundException extends RuntimeException {
     public CourseNotFoundException(Long id) {
-        super("Could not find course " + id);
+        super("Sorry Couldn't find course you are looking for " + id);
     }
     public CourseNotFoundException() {
-        super("Could not find course.");
+        super("Sorry Couldn't find course you are looking for.");
     }
 }

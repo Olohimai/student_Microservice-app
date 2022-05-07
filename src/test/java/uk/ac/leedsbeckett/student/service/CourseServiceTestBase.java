@@ -67,13 +67,6 @@ public class CourseServiceTestBase {
         course5.setId(5L);
         courseList = Arrays.asList(course1, course2, course3, course4, course5);
 
-        userStudent = new User(faker.name().username(), Role.STUDENT, "user@gmail.com", faker.animal().name());
-        userNotStudent = new User(faker.name().username(), Role.STUDENT, "uns@gmail.com", faker.animal().name());
-        userToBecomeStudent = new User(faker.name().username(), Role.STUDENT, "utbs@gmail.com", faker.animal().name());
-        student = new Student(faker.name().firstName(), faker.name().lastName());
-        createdStudent = new Student(faker.name().firstName(), faker.name().lastName());
-        userStudent.setStudent(student);
-
         enrolmentCourse2 = new Enrolment(student, course2);
         enrolmentCourse3 = new Enrolment(student, course3);
 

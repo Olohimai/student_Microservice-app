@@ -8,7 +8,7 @@ import uk.ac.leedsbeckett.student.model.Student;
 import uk.ac.leedsbeckett.student.model.User;
 import uk.ac.leedsbeckett.student.service.ProfileService;
 
-@Controller
+@RestController
 public class ProfileController {
 
     private final ProfileService profileService;

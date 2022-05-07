@@ -21,7 +21,7 @@ class GraduationServiceTest extends GraduationServiceTestBase {
         assertEquals("graduation", modelAndView.getViewName());
         assertEquals(2, modelAndView.getModel().size());
         assertFalse((Boolean) modelAndView.getModel().get("balanceOutstanding"));
-        assertEquals("eligible to graduate", modelAndView.getModel().get("message"));
+        assertEquals("Congratulations You are eligible to graduate no outstanding fees left", modelAndView.getModel().get("message"));
     }
 
     @Test
@@ -31,7 +31,7 @@ class GraduationServiceTest extends GraduationServiceTestBase {
         assertEquals("graduation", modelAndView.getViewName());
         assertEquals(2, modelAndView.getModel().size());
         assertTrue((Boolean) modelAndView.getModel().get("balanceOutstanding"));
-        assertEquals("ineligible to graduate", modelAndView.getModel().get("message"));
+        assertEquals("You have an outstanding fee therefore, you are ineligible to graduate ", modelAndView.getModel().get("message"));
     }
 
     @Test
