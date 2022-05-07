@@ -7,7 +7,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.model.Role;
 import uk.ac.leedsbeckett.student.model.Student;
 import uk.ac.leedsbeckett.student.repository.StudentRepository;
 import uk.ac.leedsbeckett.student.model.User;
@@ -17,7 +16,7 @@ import java.util.Optional;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 
-public class ProfileServiceTestBase {
+public class ProfileServiceIntTest {
 
     @MockBean
     protected StudentRepository studentRepository;

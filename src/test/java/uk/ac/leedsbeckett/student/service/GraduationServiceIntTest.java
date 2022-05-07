@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import uk.ac.leedsbeckett.student.model.*;
 
-public class GraduationServiceTestBase {
+public class GraduationServiceIntTest {
 
     @MockBean
     protected IntegrationService integrationService;

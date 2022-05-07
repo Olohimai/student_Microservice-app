@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ActiveProfiles("test")
-class CourseServiceTest extends CourseServiceTestBase {
+class CourseServiceTest extends CourseServiceIntTest {
 
     @Test
     void testGetCourses_returnsExistingCourses() {

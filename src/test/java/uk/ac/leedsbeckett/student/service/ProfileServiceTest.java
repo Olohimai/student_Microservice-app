@@ -18,12 +18,12 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ActiveProfiles("test")
-class ProfileServiceTest extends ProfileServiceTestBase {
+class ProfileServiceTest extends ProfileServiceIntTest {
 
     @Test
     void testGetProfile_callsPortalServiceMethod_once() {
         profileService.getProfile(user, existingStudent, "test");
-        verify(portalService, times(1)).loadPortalUserDetails(user, existingStudent, "dummy");
+        verify(portalService, times(1)).loadPortalUserDetails(user, existingStudent, "tests");
     }
 
     @Test
@@ -39,7 +39,7 @@ class ProfileServiceTest extends ProfileServiceTestBase {
     }
 
     @Test
-    void testGetProfileToEdit_withExistingStudentId_returnsCorrectModelAndView() {
+    void testExistingStudentId() {
         ModelAndView modelAndView = profileService.getProfileToEdit(existingStudent.getId());
         assertEquals(modelAndView.getViewName(), "profile-edit");
         assertNotNull(modelAndView.getModel());
@@ -48,20 +48,20 @@ class ProfileServiceTest extends ProfileServiceTestBase {
     }
 
     @Test
-    void testGetProfileToEdit_withNonExistingStudentId_throwsStudentNotFoundException() {
+    void testNonExistingStudentId() {
         assertThrows(StudentNotFoundException.class, () -> profileService.getProfileToEdit(9999L),
                 "Throw exception.");
     }
 
     @Test
-    void testGetProfileToEdit_withNullStudentId_throwsStudentNotFoundException() {
+    void testNullStudentId() {
         assertThrows(StudentNotFoundException.class, () -> profileService.getProfileToEdit(null),
                 "Throw exception");
     }
 
     @Test
-    void testEditProfile_withStudentDetailsModified_returnsCorrectModelAndView() {
-        dataStudent.setForename("    Peace");
+    void testEditProfile() {
+        dataStudent.setForename("Peace");
         dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
@@ -71,19 +71,19 @@ class ProfileServiceTest extends ProfileServiceTestBase {
     }
 
     @Test
-    void testEditProfile_withStudentDetailsCreated_returnsCorrectModelAndView() {
-        dataStudent.setForename("    Peace");
+    void testDetailsCreated() {
+        dataStudent.setForename("Peace");
         dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
-        assertEquals("    Peace", returnedStudent.getForename());
+        assertEquals("Peace", returnedStudent.getForename());
         assertEquals("Akalumhe", returnedStudent.getSurname());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
-    void testEditProfile_withOnlyForenameSupplied_onlyUpdatesForename_andReturnsCorrectModelAndView() {
-        dataStudent.setForename("    Peace");
+    void testEditForename() {
+        dataStudent.setForename("Peace");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
         assertNotNull(returnedStudent.getSurname());
@@ -92,18 +92,18 @@ class ProfileServiceTest extends ProfileServiceTestBase {
     }
 
     @Test
-    void testEditProfile_withForenameSuppliedAndSurnameBlank_onlyUpdatesForename_andReturnsCorrectModelAndView() {
-        dataStudent.setForename("    Peace");
+    void testEditForenameAndSurnameEmpty() {
+        dataStudent.setForename("Peace");
         dataStudent.setSurname("");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");
         assertNotNull(returnedStudent.getSurname());
-        assertEquals("    Peace", returnedStudent.getForename());
+        assertEquals("Peace", returnedStudent.getForename());
         assertStudentUpdated(modelAndView, returnedStudent);
     }
 
     @Test
-    void testEditProfile_withOnlySurnameSupplied_returnsCorrectModelAndView() {
+    void testEditSurname() {
         dataStudent.setSurname("Akalumhe");
         ModelAndView modelAndView = profileService.editProfile(dataStudent);
         Student returnedStudent = (Student) modelAndView.getModel().get("student");

@@ -17,7 +17,7 @@ import java.util.Optional;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 
-public class CourseServiceTestBase {
+public class CourseServiceIntTest {
 
     @MockBean
     protected CourseRepository courseRepository;
@@ -71,7 +71,7 @@ public class CourseServiceTestBase {
         enrolmentCourse3 = new Enrolment(student, course3);
 
         invoice = new Invoice();
-        invoice.setReference("ABCD1234");
+        invoice.setReference("XYZD9876");
         account = new Account();
         account.setHasOutstandingBalance(true);
         invoice.setAccount(account);

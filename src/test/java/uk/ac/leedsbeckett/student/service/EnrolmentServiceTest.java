@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ActiveProfiles("test")
-class EnrolmentServiceTest extends EnrolmentServiceTestBase {
+class EnrolmentServiceTest extends EnrolmentServiceIntTest {
 
     @Test
     void testFindEnrolment_whenManyEnrolmentsExist_returnsCorrectEnrolment() {

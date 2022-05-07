@@ -13,19 +13,15 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ActiveProfiles("test")
-class GraduationServiceTest extends GraduationServiceTestBase {
+class GraduationServiceTest extends GraduationServiceIntTest {
 
     @Test
-    void testGetGraduationStatus_whenEligible_returnsCorrectModelAndView() {
-        ModelAndView modelAndView = graduationService.getGraduationStatus(student);
-        assertEquals("graduation", modelAndView.getViewName());
-        assertEquals(2, modelAndView.getModel().size());
-        assertFalse((Boolean) modelAndView.getModel().get("balanceOutstanding"));
-        assertEquals("Congratulations You are eligible to graduate no outstanding fees left", modelAndView.getModel().get("message"));
+    void testGraduationStatus() {
+        assertThrows(StudentNotFoundException.class, () -> graduationService.getGraduationStatus(null),
+            "Exception was not thrown.");
     }
-
     @Test
-    void testGetGraduationStatus_whenNotEligible_returnsCorrectModelAndView() {
+    void testEligibleNotToGraduate() {
         account.setHasOutstandingBalance(true);
         ModelAndView modelAndView = graduationService.getGraduationStatus(student);
         assertEquals("graduation", modelAndView.getViewName());
@@ -33,11 +29,17 @@ class GraduationServiceTest extends GraduationServiceTestBase {
         assertTrue((Boolean) modelAndView.getModel().get("balanceOutstanding"));
         assertEquals("You have an outstanding fee therefore, you are ineligible to graduate ", modelAndView.getModel().get("message"));
     }
-
     @Test
-    void testGetGraduationStatus_whenStudentIsNull_throwsStudentNotFoundException() {
-        assertThrows(StudentNotFoundException.class, () -> graduationService.getGraduationStatus(null),
-                "Exception was not thrown.");
+    void testEligibilityToGraduate() {
+        ModelAndView modelAndView = graduationService.getGraduationStatus(student);
+        assertEquals("graduation", modelAndView.getViewName());
+        assertEquals(2, modelAndView.getModel().size());
+        assertFalse((Boolean) modelAndView.getModel().get("balanceOutstanding"));
+        assertEquals("Congratulations You are eligible to graduate no outstanding fees left", modelAndView.getModel().get("message"));
     }
+
+
+
+
 
 }

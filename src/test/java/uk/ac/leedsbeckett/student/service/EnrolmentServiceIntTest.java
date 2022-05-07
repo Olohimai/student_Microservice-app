@@ -19,7 +19,7 @@ import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 
-public class EnrolmentServiceTestBase {
+public class EnrolmentServiceIntTest {
 
     @MockBean
     protected EnrolmentRepository enrolmentRepository;
