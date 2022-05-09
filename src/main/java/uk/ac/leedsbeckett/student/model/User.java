@@ -1,14 +1,12 @@
 package uk.ac.leedsbeckett.student.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Table(name = "PORTAL_USER")
 public class User {
 
@@ -31,4 +29,14 @@ public class User {
                     { @JoinColumn(name = "student_id", referencedColumnName = "id") })
     @ToString.Exclude
     private Student student;
+
+    public User() {
+    }
+
+    public User(String userName, Role role, String email, String password) {
+        this.userName = userName;
+        this.role = role;
+        this.email = email;
+        this.password = password;
+    }
 }

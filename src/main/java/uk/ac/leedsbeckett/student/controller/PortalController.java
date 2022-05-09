@@ -4,13 +4,12 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.leedsbeckett.student.model.Student;
 import uk.ac.leedsbeckett.student.model.User;
 import uk.ac.leedsbeckett.student.service.PortalService;
 
-@RestController
+@Controller
 public class PortalController {
 
     private final PortalService portalService;

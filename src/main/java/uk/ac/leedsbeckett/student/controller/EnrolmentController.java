@@ -3,12 +3,11 @@ package uk.ac.leedsbeckett.student.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.leedsbeckett.student.model.Student;
 import uk.ac.leedsbeckett.student.service.EnrolmentService;
 
-@RestController
+@Controller
 public class EnrolmentController {
 
     private final EnrolmentService enrolmentService;

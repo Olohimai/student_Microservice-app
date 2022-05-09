@@ -3,8 +3,7 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <title>Student Portal View Course</title>
-    <meta th:replace="partials/header"/>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta th:replace="partials/layout"/>
 </head>
 <body>
 <div th:replace="partials/menu"></div>
@@ -18,11 +17,11 @@
     <div >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
             <div class="py-8 w-1/2 space-y-4">
-         <div>
-             <h1 class="text-3xl font-semibold uppercase text-gray-700" th:inline="text">[[${course.title}]]</h1>
-             <p th:inline="text">[[${course.description}]]</p>
-             <p th:inline="text">Fee: [[${#numbers.formatCurrency(course.fee)}]]</p>
-         </div>
+                <div>
+                    <h1 class="text-3xl font-semibold uppercase text-gray-700" th:inline="text">[[${course.title}]]</h1>
+                    <p th:inline="text">[[${course.description}]]</p>
+                    <p th:inline="text">Fee: [[${#numbers.formatCurrency(course.fee)}]]</p>
+                </div>
                 <div th:unless="${isEnrolled}">
                     <form action="#" th:action="@{'/courses/' + ${course.id} + '/enrol'}" method="post">
                         <button class="text-white rounded-sm bg-blue-500 py-2 px-3 hover:text-indigo-900" type="submit" name="course" value="submit">Enrol Now

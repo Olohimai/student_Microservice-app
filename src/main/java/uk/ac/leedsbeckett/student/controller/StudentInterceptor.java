@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.leedsbeckett.student.model.*;
-import uk.ac.leedsbeckett.student.repository.StudentRepository;
 import uk.ac.leedsbeckett.student.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-SET GLOBAL general_log_file = '/var/log/mysql/mariadb.log';
+SET GLOBAL general_log_file = '/var/log/mysql/general.log';
 SET GLOBAL general_log = 1;
 
 drop schema if exists student;
@@ -83,10 +83,7 @@ INSERT INTO student.course (id, description, fee, title)
 VALUES (5, 'This module provides an in-depth look at the Service-Oriented Architecture paradigm and, more specifically, at its recent development: Microservices. ',5000,
         'Software Engineering forService Computing');
 INSERT INTO student.course (id, description, fee, title)
-VALUES (6, 'The Dissertation forms an important element of the MSc courses, and must be passed to obtain the MSc degree. ', 7000,
-        'Software Engineering forService Computing');
-INSERT INTO student.course (id, description, fee, title)
-VALUES (7, 'Learn about the fundamental principles and approaches for Intelligent Systems, autonomous behaviour, sensing and control, through the practical example of a simple robotic device (Delta Robot). You''ll have opportunity to work practically with the robot and develop software for simple behavioural and reaction patterns of robotic devices.', 725,
+VALUES (6, 'Learn about the fundamental principles and approaches for Intelligent Systems, autonomous behaviour, sensing and control, through the practical example of a simple robotic device (Delta Robot). You''ll have opportunity to work practically with the robot and develop software for simple behavioural and reaction patterns of robotic devices.', 725,
         'Dissertation');
 
 
@@ -97,7 +94,4 @@ VALUES (3, 1);
 INSERT INTO student.enrolment (course_id, student_id)
 VALUES (4, 1);
 
-DROP USER IF EXISTS 'student-spring-user'@'%';
-CREATE USER 'student-spring-user'@'%' IDENTIFIED BY 'student-secret';
-GRANT ALL PRIVILEGES on student.* to `student-spring-user`;
-FLUSH PRIVILEGES;
+

@@ -2,28 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
-    <title>Home</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <meta th:replace="partials/header"/>
+    <title>Student Portal Home Page</title>
+    <meta th:replace="partials/layout"/>
 </head>
 <body>
 <div th:replace="partials/menu"></div>
-<div class=" py-12">
-<div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="flex items-center  space-x-2">
-        <h2 class="text-3xl font-semibold" th:inline="text">Hello, [[${showFirstName ? student.forename : user.userName}]]</h2>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
+<div class=" py-12 px-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center  space-x-2">
+            <div class="text-3xl font-semibold text-blue-500" th:inline="text">Hello, [[${showFirstName ? student.forename : user.userName}]]</div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <div class="my-16 text-base w-1/2 text-purple-500">
+            Welcome to your Student portal  You can view all the courses offered,
+            Enrol in any of the courses if this is your first enrolment,
+            You can also see all courses you are enrolled in,
+            View and update your profile, lastly you can view your eligibility to graduate. Note that you must not have
+            any outstanding invoices. Pay all outstanding invoices in order to graduate
+        </div>
     </div>
-    <div class="my-16 text-base w-1/2">
-        Welcome to your Student portal  You can view all the courses offered,
-        Enrol in any of the courses if this is your first enrolment,
-        You can also see all courses you are enrolled in,
-        View and update your profile, lastly you can view your eligibility to graduate. Note that you must not have
-        any outstanding invoices. Pay all outstanding invoices in order to graduate
-    </div>
-</div>
 </div>
 <div class="px-4 sm:px-6" th:replace="partials/footer"></div>
 </body>

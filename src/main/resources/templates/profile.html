@@ -3,19 +3,18 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <title>Student Profile Page</title>
-    <meta th:replace="partials/header"/>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta th:replace="partials/layout"/>
 </head>
 <body>
 <div th:replace="partials/menu"></div>
 <div id="alert" th:if="${message}" th:text="${message}"
-     th:class="${updated ? 'alert alert-success' : 'alert alert-warning'}"></div>
+     th:class="${updated ? 'bg-green-500 py-3 px-2 text-white' : 'menu'}"></div>
 <ul class=" py-20 mx-auto text-center text-xl space-y-4 border px-4">
     <li th:inline="text">Student Profile</li>
     <li th:inline="text">First Name: [[${student.forename}]]</li>
     <li th:inline="text">Surname: [[${student.surname}]]</li>
     <li th:inline="text">Student ID: [[${student.studentId}]]</li>
-   <li><a class="px-3 py-2 bg-blue-500 text-white text-sm rounded-full" th:href="@{'/editProfile/' + ${student.id}}" role="button">Profile Edit</a></li>
+    <li><a class="px-3 py-2 bg-blue-500 text-white text-sm rounded-full" th:href="@{'/editProfile/' + ${student.id}}" role="button">Profile Edit</a></li>
 </ul>
 </body>
 </html>

@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import uk.ac.leedsbeckett.student.repository.UserRepository;
+import uk.ac.leedsbeckett.student.model.UserRepository;
 import uk.ac.leedsbeckett.student.service.PortalService;
 
 import javax.sql.DataSource;

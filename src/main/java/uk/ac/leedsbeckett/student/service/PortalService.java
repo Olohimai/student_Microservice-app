@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.leedsbeckett.student.model.*;
-import uk.ac.leedsbeckett.student.repository.UserRepository;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -28,7 +27,7 @@ public class PortalService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found.");
         }
-        return new Details(user);
+        return new PortalUserDetails(user);
     }
 
     public ModelAndView loadPortalUserDetails(User user, Student student, @NotNull @NotEmpty String view) {
@@ -40,7 +39,7 @@ public class PortalService implements UserDetailsService {
         if (student != null) {
             modelAndView.addObject("student", student);
         }
-        modelAndView.addObject("showFirstName", student != null && student.getFirstname() != null);
+        modelAndView.addObject("showFirstName", student != null && student.getForename() != null);
         return modelAndView;
     }
 

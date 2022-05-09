@@ -4,9 +4,8 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.CourseException;
+import uk.ac.leedsbeckett.student.exception.CourseNotFoundException;
 import uk.ac.leedsbeckett.student.model.*;
-import uk.ac.leedsbeckett.student.repository.CourseRepository;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -66,7 +65,7 @@ public class CourseService {
         modelAndView.addObject("course", course);
         modelAndView.addObject("student", student);
         modelAndView.addObject("isEnrolled", isEnrolled);
-        StringBuilder message = new StringBuilder("Successfully enrolled into this course.");
+        StringBuilder message = new StringBuilder("You are enrolled in this course.");
         if (invoice != null && invoice.getReference() != null && !invoice.getReference().isEmpty()) {
             message.append(" Please log into the Payment Portal to pay the invoice reference: ")
                     .append(invoice.getReference())
@@ -80,7 +79,7 @@ public class CourseService {
 
     private void populateStudentAndCourse(User user, Long courseId) {
         student = userService.findStudentFromUser(user);
-        course = courseRepository.findById(courseId).orElseThrow(CourseException::new);
+        course = courseRepository.findById(courseId).orElseThrow(CourseNotFoundException::new);
     }
 
     private Invoice notifySubscribers(Student student, Course course) {

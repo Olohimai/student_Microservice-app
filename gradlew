@@ -194,7 +194,7 @@ if "$cygwin" || "$msys" ; then
 fi
 
 # Collect all arguments for the java command;
-#   * $DEFAULT_JVM_OPTS, $JAVA_OPTS, and $GRADLE_OPTS can contain fragments of
+#   * $DEFAULT_JVM_OPTS, $JAVA_OPTS, and $GRADLE_OPTS can contain partials of
 #     shell script including quotes and variable substitutions, so put them in
 #     double quotes to make sure that they get re-expanded; and
 #   * put everything else in single quotes, so that it's not re-expanded.

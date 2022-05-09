@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import uk.ac.leedsbeckett.student.YamlSourceFactory;
+import uk.ac.leedsbeckett.student.YamlPropertySourceFactory;
 import uk.ac.leedsbeckett.student.model.Account;
 import uk.ac.leedsbeckett.student.model.Invoice;
 import uk.ac.leedsbeckett.student.model.Student;
@@ -12,7 +12,7 @@ import uk.ac.leedsbeckett.student.model.Student;
 import javax.validation.constraints.NotNull;
 
 @Component
-@PropertySource(value = "classpath:integrations.yml", factory = YamlSourceFactory.class)
+@PropertySource(value = "classpath:integrations.yml", factory = YamlPropertySourceFactory.class)
 public class IntegrationService {
 
     private final RestTemplate restTemplate;

@@ -12,10 +12,10 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import uk.ac.leedsbeckett.student.repository.CourseRepository;
-import uk.ac.leedsbeckett.student.repository.EnrolmentRepository;
-import uk.ac.leedsbeckett.student.repository.StudentRepository;
-import uk.ac.leedsbeckett.student.repository.UserRepository;
+import uk.ac.leedsbeckett.student.model.*;
+import uk.ac.leedsbeckett.student.model.CourseRepository;
+import uk.ac.leedsbeckett.student.model.EnrolmentRepository;
+import uk.ac.leedsbeckett.student.model.StudentRepository;
 
 import java.util.Locale;
 
@@ -56,6 +56,7 @@ class MiscellaneousBeans {
     @Bean
     CommandLineRunner initDatabase(StudentRepository studentRepository, UserRepository userRepository, CourseRepository courseRepository, EnrolmentRepository enrolmentRepository) {
         return args -> {
+
         };
     }
 }

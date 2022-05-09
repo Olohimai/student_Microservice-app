@@ -3,7 +3,7 @@ package uk.ac.leedsbeckett.student.service;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.StudentException;
+import uk.ac.leedsbeckett.student.exception.StudentNotFoundException;
 import uk.ac.leedsbeckett.student.model.Account;
 import uk.ac.leedsbeckett.student.model.Student;
 
@@ -19,12 +19,12 @@ public class GraduationService {
 
     public ModelAndView getGraduationStatus(Student student) {
         if (student == null) {
-            throw new StudentException();
+            throw new StudentNotFoundException();
         }
         Account account = integrationService.getStudentPaymentStatus(student);
         ModelAndView modelAndView = new ModelAndView("graduation");
         modelAndView.addObject("balanceOutstanding", account.isHasOutstandingBalance());
-        modelAndView.addObject("message", account.isHasOutstandingBalance() ? "You have an outstanding fee therefore, you are ineligible to graduate " : "Congratulations You are eligible to graduate no outstanding fees left");
+        modelAndView.addObject("message", account.isHasOutstandingBalance() ? "Sorry you ineligible to graduate at the moment" : "Congratulations you are eligible to graduate");
         return modelAndView;
     }
 }

@@ -4,9 +4,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.leedsbeckett.student.exception.StudentException;
+import uk.ac.leedsbeckett.student.exception.StudentNotFoundException;
 import uk.ac.leedsbeckett.student.model.Student;
-import uk.ac.leedsbeckett.student.repository.StudentRepository;
+import uk.ac.leedsbeckett.student.model.StudentRepository;
 import uk.ac.leedsbeckett.student.model.User;
 
 import javax.validation.constraints.NotEmpty;
@@ -29,20 +29,20 @@ public class ProfileService {
     }
 
     public ModelAndView getProfileToEdit(Long studentId) {
-        Student student = studentRepository.findById(studentId).orElseThrow(StudentException::new);
-        ModelAndView modelAndView = new ModelAndView("update");
+        Student student = studentRepository.findById(studentId).orElseThrow(StudentNotFoundException::new);
+        ModelAndView modelAndView = new ModelAndView("profile-edit");
         modelAndView.addObject("student", student);
         return modelAndView;
     }
 
     public ModelAndView editProfile(Student providedStudent) {
-        Student studentFromDatabase = studentRepository.findById(providedStudent.getId()).orElseThrow(StudentException::new);
+        Student studentFromDatabase = studentRepository.findById(providedStudent.getId()).orElseThrow(StudentNotFoundException::new);
         Student studentToSave = new Student();
         studentToSave.populateStudentId();
         BeanUtils.copyProperties(studentFromDatabase, studentToSave);
 
-        if (providedStudent.getFirstname() != null && !providedStudent.getFirstname().isEmpty()) {
-            studentToSave.setFirstname(providedStudent.getFirstname());
+        if (providedStudent.getForename() != null && !providedStudent.getForename().isEmpty()) {
+            studentToSave.setForename(providedStudent.getForename());
         }
         if (providedStudent.getSurname() != null && !providedStudent.getSurname().isEmpty()) {
             studentToSave.setSurname(providedStudent.getSurname());
@@ -53,7 +53,7 @@ public class ProfileService {
         modelAndView.addObject("student", returnedStudent);
         modelAndView.addObject("isStudent", true);
         modelAndView.addObject("updated", changed);
-        modelAndView.addObject("message", changed ? "You have Successfully Updated your Profile" : "Your Profile Did not update because name already in use, Enter a new name!!!");
+        modelAndView.addObject("message", changed ? "Your Profile was updated successfully" : "Your Profile was not updated try a new Firstname");
         return modelAndView;
     }
 }
